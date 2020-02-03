@@ -1,0 +1,7 @@
+# Generated using darkmod files
+src/script/tdm_main.script
+# Reference of darkmod files for development
+ref/
+# Executing darkmod seems to leave this in current directory
+Darkmod.log
+*.pk4

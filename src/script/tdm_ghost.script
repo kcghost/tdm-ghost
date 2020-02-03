@@ -1,0 +1,29 @@
+// Add mission statistics to gameplay
+// Add optional objectives: No kills, No KO, All loot, Don't be seen, Don't be searched for, Don't be detected
+
+// Could try to add objectives corresponding to official ghost rules? But they might be very difficult to script
+// https://www.ttlg.com/forums/showthread.php?t=148523
+
+#ifndef __TDM_GHOST__
+#define __TDM_GHOST__
+
+// look at tdm_savegame_settings.script, can probably hook script without alterations to tdm_main
+
+// the main function does not take arguments nor returns something
+void tdm_ghost_main () {
+	// always wait one frame before doing anything in main()
+	// this ensures that the init() routines have all finished
+	sys.waitFrame();
+
+	float statistics_stealthScore;
+
+	// Should do all of this in a thread?
+	while(1)
+	{
+		sys.wait(2);
+		statistics_stealthScore = sys.getMissionStatistic("stealthScore");
+		sys.println(statistics_stealthScore);
+	}
+}
+
+#endif

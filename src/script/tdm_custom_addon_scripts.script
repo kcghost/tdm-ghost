@@ -1,0 +1,11 @@
+/* =============================================================================================
+ *
+ * This file is added to The Dark Mod's Script Inclusion chain in tdm_main.script (modified by Addon pack)
+ *
+ * ============================================================================================= */
+
+#include "script/tdm_ghost.script"
+
+void custom_addon_script_init_hook () {
+	tdm_ghost_main();
+}
