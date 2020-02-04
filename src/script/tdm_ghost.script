@@ -7,23 +7,25 @@
 #ifndef __TDM_GHOST__
 #define __TDM_GHOST__
 
-// look at tdm_savegame_settings.script, can probably hook script without alterations to tdm_main
-
-// the main function does not take arguments nor returns something
-void tdm_ghost_main () {
-	// always wait one frame before doing anything in main()
-	// this ensures that the init() routines have all finished
-	sys.waitFrame();
-
+void tdm_ghost_loop() {
 	float statistics_stealthScore;
 
-	// Should do all of this in a thread?
 	while(1)
 	{
-		sys.wait(2);
+		sys.wait(1);
+		sys.waitFrame();
 		statistics_stealthScore = sys.getMissionStatistic("stealthScore");
 		sys.println(statistics_stealthScore);
 	}
+}
+
+// the main function does not take arguments nor returns something
+void tdm_ghost_main() {
+	// always wait one frame before doing anything in main()
+	// this ensures that the init() routines have all finished
+	sys.println("tdm_ghost_main");
+
+	thread tdm_ghost_loop();
 }
 
 #endif

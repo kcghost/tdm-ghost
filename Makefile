@@ -13,7 +13,7 @@ src/script/tdm_main.script: ~/darkmod/tdm_base01.pk4
 	sed "/tdm_custom_scripts/a \\\n// kcghost: Add custom addon hook to $$TDM_VERSION tdm_main.script\n#include \"script/tdm_custom_addon_scripts.script\"" $@ -i
 	sed "/Do any script setup here/a \\\tcustom_addon_script_init_hook();" $@ -i
 
-tdm_ghost.pk4: src/README.txt src/script/tdm_ghost.script src/script/tdm_main.script
+tdm_ghost.pk4: src/README.txt src/script/tdm_ghost.script src/script/tdm_custom_addon_scripts.script src/script/tdm_main.script
 	rm -f $@
 	cd src
 	zip -0 -r ../$(notdir $@) *
